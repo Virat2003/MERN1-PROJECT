@@ -1,8 +1,19 @@
 
 import { AiFillCar } from "react-icons/ai";
 import { FaHouseUser, FaWarehouse } from "react-icons/fa";
-import { BsPersonWorkspace } from "react-icons/bs";
+import { BsFillDoorOpenFill, BsPersonWorkspace } from "react-icons/bs";
 import { GiStorageBox } from "react-icons/gi";
+import { BiWifi } from "react-icons/bi";          // for WiFi icon
+import { GiCctvCamera } from "react-icons/gi";    // for CCTV icon
+import { FaSnowflake } from "react-icons/fa";   // from Font Awesome
+import { TbAirConditioning } from "react-icons/tb";   // from Tabler icons
+import { FaFireExtinguisher } from "react-icons/fa";
+
+
+
+// import { FaHouseUser } from 'react-icons/fa'; 
+// import { BsFillDoorOpenFill } from 'react-icons/bs'; 
+import { AiOutlineDatabase } from 'react-icons/ai';
 
 export const categories = [
   {
@@ -44,3 +55,49 @@ export const categories = [
 //     description: "Find open-air spaces for activities",
 //   },
 ];
+
+
+export const types=[
+  {
+    name:"An entire place",
+    description:"Guests have the whole space to themsevels",
+    icon: <FaHouseUser />
+  },
+  {
+    name:"Room",
+    description:"Guests have their own room in a house",
+    icon:<BsFillDoorOpenFill />
+  },
+  {
+    name:"Storage",
+    description:"Space to store items-Warehouse corner,garage,storage room",
+    icon:<AiOutlineDatabase/>
+  },
+]
+
+export const facilities=[
+  {
+    name:"Wi-Fi",
+    icon:<BiWifi/>,
+  },
+  {
+    name:"Parking",
+    icon:<AiFillCar/>,
+  },
+  {
+    name:"Air Conditioning",
+    icon:<TbAirConditioning />,
+  },
+    {
+    name: "Security cameras",
+    icon: <GiCctvCamera />,
+  },
+    {
+    name: "Fire extinguisher",
+    icon: <FaFireExtinguisher />,
+  },
+    {
+    name: "Dedicated workspace",
+    icon: <BsPersonWorkspace />
+  },
+]

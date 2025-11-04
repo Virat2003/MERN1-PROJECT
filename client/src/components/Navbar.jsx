@@ -30,7 +30,7 @@ import { setLogout } from "../redux/state";
 
         <div className="navbar_right">
             {user ? (
-                    <a href="/create-listing" className='host'>Become A Host</a>
+                    <a href="/create-listing" className='host'>Become Host</a>
         ) : (
           <a href="/login" className='host'>Become A Host</a>
         )}
@@ -56,7 +56,7 @@ import { setLogout } from "../redux/state";
             <div className="navbar_right_accountmenu">
                 <Link to="">bookingList</Link>
                 <Link to="">spaceList</Link>
-                <Link to="">Create Listing</Link>
+                <Link to="/create-listing">Create Listing</Link>
 
                 <Link to="/login" onClick={()=>{
                     dispatch(setLogout())

@@ -409,9 +409,22 @@ padding: 10px 20px;
 /* Submit Button */
 .create-listing .submit_btn {
   margin-top: 40px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
+  border-radius: 10px;
+  background-color: rgb(236, 63, 63);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
   /* replace with buttonStyle properties */
 }
 
 .create-listing .submit_btn:hover {
   box-shadow: 0 0 10px 3px rgb(117, 117, 117);
+  
 }
+
+
