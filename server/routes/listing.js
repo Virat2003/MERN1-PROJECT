@@ -65,14 +65,14 @@ catch(err) {
 /* Get the listing on home page */
 
 router.get("/",async (req, res) => {
-  const qCategory= req.query.category
+  const qCategory= req.query.category        // qCategory take from request query and request taken from category
   try{
     let listings
     if (qCategory) {
       listings = await Listing.find({ category: qCategory }).populate( "creator")
     }
     else{
-      listings = await Listing.find()
+      listings = await Listing.find().populate("creator")
     }
     res.status(200).json(listings)
   } catch(err){
