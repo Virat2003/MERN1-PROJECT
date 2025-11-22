@@ -82,4 +82,15 @@ router.get("/",async (req, res) => {
   }
 })
 
+/* space details API */
+router.get("/:listingId", async (req, res) => {
+  try {
+    const { listingId } = req.params
+    const listing = await Listing.findById(listingId).populate("creator")
+    res.status(200).json(listing)
+  } catch (err) {
+    res.status(404).json({ message: "Listing not found!", error: err.message })
+  }
+})
+
 module.exports = router

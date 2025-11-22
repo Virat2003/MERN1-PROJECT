@@ -3,13 +3,17 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
+const userRoutes = require("./routes/user.js")
 
 const authRoutes = require("./routes/auth.js")
 const ListingRoutes= require("./routes/listing.js")
+const BookingRoutes = require("./routes/booking.js")
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/bookings",BookingRoutes)
+app.use("/users", userRoutes)
 
 /* ROUTES */
 app.use("/auth", authRoutes)

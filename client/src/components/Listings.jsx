@@ -1,11 +1,10 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { categories } from "../data";
+import { setListings } from "../redux/state";
 import "../styles/Listing.css";
 import ListingCard from "./ListingCard";
 import Loader from "./Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { setListings } from "../redux/state";
 
 const Listings = () => {
   const dispatch = useDispatch();
@@ -71,7 +70,7 @@ const Listings = () => {
               price
               }) => (
               <ListingCard
-                listingId = {_id}
+                _id = {_id}
                 creator = {creator}
                 listingPhotoPaths = {listingPhotoPaths}
                 city = {city}

@@ -4,6 +4,8 @@ import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import CreateListing from "./pages/CreateListing";
+import SpaceDetails from "./pages/SpaceDetails";
+import Bookinglist from "./pages/Bookinglist";
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/create-listing" element={<CreateListing />} />
+          <Route path="/properties/:listingId" element={<SpaceDetails />} />
+          <Route path="/users/:userId/bookings" element={<Bookinglist />} />
+
 
           </Routes>
       </BrowserRouter>

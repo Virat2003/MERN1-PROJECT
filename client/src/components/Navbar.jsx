@@ -1,12 +1,11 @@
-import React from 'react'
-import {IconButton} from "@mui/material"
-import {Search, Person, Menu} from "@mui/icons-material"
-import variables from "../styles/variables.css"
+import { Menu, Person, Search } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 import { useState } from "react";
-import { useSelector , useDispatch} from "react-redux";
-import "../styles/Navbar.css"
-import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { setLogout } from "../redux/state";
+import "../styles/Navbar.css";
+import "../styles/variables.css";
 
  const Navbar = () => {
     const [dropdownMenu, setDropdownMenu] = useState(false);
@@ -17,29 +16,29 @@ import { setLogout } from "../redux/state";
 
   return (
     <div className='navbar'>
-        <a href='/'>
-        <img src="/assests/logo.png" alt="logo" />
-        </a>
+        <Link to="/">
+          <img src="/assests/logo.png" alt="logo" />
+        </Link>
 
         <div className='navbar_search'>
             <input type="text" placeholder='Search..'/>
             <IconButton>
-                <Search sx={{ color:variables.pinkred }} />
+              <Search sx={{ color: "var(--pinkred)" }} />
             </IconButton>
         </div>
 
         <div className="navbar_right">
             {user ? (
-                    <a href="/create-listing" className='host'>Become Host</a>
+                    <Link to="/create-listing" className='host'>Become Host</Link>
         ) : (
-          <a href="/login" className='host'>Become A Host</a>
+          <Link to="/login" className='host'>Become A Host</Link>
         )}
 
         <button className='navbar_right_account' onClick={()=>setDropdownMenu(!dropdownMenu)}>
-            <Menu sx={{ color:variables.darkgrey }}/>
+            <Menu sx={{ color: "var(--darkgrey)" }}/>
             {!user ?
             
-            <Person sx={{ color:variables.darkgrey }}/>
+            <Person sx={{ color: "var(--darkgrey)" }}/>
             : (
             <img src={`http://localhost:3001/${user.profileImagePath.replace("public", "")}`}alt="profile photo" style={{ objectFit: "cover", borderRadius: "50%" }} />
           )}
@@ -53,15 +52,16 @@ import { setLogout } from "../redux/state";
         )}
 
         {dropdownMenu && user && (
-            <div className="navbar_right_accountmenu">
-                <Link to="">bookingList</Link>
-                <Link to="">spaceList</Link>
-                <Link to="/create-listing">Create Listing</Link>
+          <div className="navbar_right_accountmenu">
+            <Link to={`/users/${user._id}/bookings`} onClick={() => setDropdownMenu(false)}>Bookings</Link>
+            <Link to="/properties" onClick={() => setDropdownMenu(false)}>My SpaceList</Link>
+            <Link to="/create-listing" onClick={() => setDropdownMenu(false)}>Create Listing</Link>
 
-                <Link to="/login" onClick={()=>{
-                    dispatch(setLogout())
-                }}>Log Out</Link>
-            </div>
+            <Link to="/login" onClick={() => {
+              dispatch(setLogout());
+              setDropdownMenu(false);
+            }}>Log Out</Link>
+          </div>
         )}
 
 
