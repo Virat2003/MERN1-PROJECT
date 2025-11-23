@@ -54,7 +54,7 @@ import "../styles/variables.css";
         {dropdownMenu && user && (
           <div className="navbar_right_accountmenu">
             <Link to={`/users/${user._id}/bookings`} onClick={() => setDropdownMenu(false)}>Bookings</Link>
-            <Link to="/properties" onClick={() => setDropdownMenu(false)}>My SpaceList</Link>
+            <Link to={`/users/${user._id}/properties`} onClick={() => setDropdownMenu(false)}>My SpaceList</Link>
             <Link to="/create-listing" onClick={() => setDropdownMenu(false)}>Create Listing</Link>
 
             <Link to="/login" onClick={() => {

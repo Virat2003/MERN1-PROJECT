@@ -22,9 +22,13 @@ export const userSlice = createSlice({
     },
     setBookingList: (state, action)=> {
       state.user.bookingList = action.payload
-    }
+    },
+      setPropertyList: (state, action) => {
+        if (!state.user) state.user = {};
+        state.user.propertyList = action.payload;
+      }
   }
 });
 
-export const { setLogin,setLogout, setListings, setBookingList } = userSlice.actions;
+export const { setLogin,setLogout, setListings, setBookingList, setPropertyList } = userSlice.actions;
 export default userSlice.reducer;
