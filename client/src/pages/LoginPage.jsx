@@ -3,6 +3,8 @@ import "../styles/Login.css";
 import { setLogin } from "../redux/state";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -73,6 +75,7 @@ const LoginPage = () => {
         </form>
         <a href="/register">Don't have an account? Sign In Here</a>
       </div>
+      <Footer />
     </div>
   );
 };

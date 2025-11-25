@@ -62,7 +62,7 @@ catch(err) {
 });
 
 
-/* Get the listing on home page */
+/* Get the listing by category on home page */
 
 router.get("/",async (req, res) => {
   const qCategory= req.query.category        // qCategory take from request query and request taken from category
@@ -81,6 +81,33 @@ router.get("/",async (req, res) => {
     
   }
 })
+
+
+/* get listings by search */
+router.get("/search/:search", async (req, res) => {
+  const { search } = req.params
+
+  try {
+    let listings = []
+
+    if (search === "all") {
+      listings = await Listing.find().populate("creator")
+    } else {
+      listings = await Listing.find({
+        $or: [
+          { category: {$regex: search, $options: "i" } },  //$regex is mongodb operator that allows you to gives the regular expression patterns for matching.
+          { title: {$regex: search, $options: "i" } },     //$options: "i" it is stands for case insensitive matching it means that if search should be caseinsensitive. if you type uppercase or lowercase doesn't matter its still like case insensitive. 
+        ]
+      }).populate("creator")
+    }
+
+    res.status(200).json(listings)
+  } catch (err) {
+    res.status(404).json({ message: "Fail to fetch listings", error: err.message })
+    console.log(err)
+  }
+})
+
 
 /* space details API */
 router.get("/:listingId", async (req, res) => {

@@ -2,6 +2,7 @@ import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/ListingCard.css";
+import Footer from "./Footer";
 
 const ListingCard = ({
   listingId,
@@ -23,21 +24,20 @@ const ListingCard = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + listingPhotoPaths.length) % listingPhotoPaths.length
-    );
+    const len = listingPhotoPaths?.length || 1;
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + len) % len);
   };
 
   const goToNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % listingPhotoPaths.length);
+    const len = listingPhotoPaths?.length || 1;
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % len);
   };
 
+  // support both prop names: `_id` (preferred) or `listingId` (legacy)
+  const id = _id || listingId;
+
   return (
-    <Link
-      to={`/properties/${_id}`}
-      style={{ textDecoration: "none", color: "inherit" }}
-    >
+    <Link to={`/properties/${id}`} style={{ textDecoration: "none", color: "inherit" }}>
       <div className="listing-card">
         <div className="slider-container">
           <div

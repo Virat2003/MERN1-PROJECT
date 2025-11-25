@@ -8,6 +8,8 @@ import "react-date-range/dist/theme/default.css";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
+import Footer from "../components/Footer";
+
 
 const SpaceDetails = () => {
   const { listingId } = useParams();
@@ -183,6 +185,7 @@ const SpaceDetails = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

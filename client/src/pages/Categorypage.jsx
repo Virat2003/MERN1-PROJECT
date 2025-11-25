@@ -1,53 +1,50 @@
-import "../styles/List.css";
-import {useDispatch, useSelector } from "react-redux";
-import Navbar from "../components/Navbar";
-import ListingCard from "../components/ListingCard";
-import { setPropertyList } from "../redux/state";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import ListingCard from "../components/ListingCard";
 import Loader from "../components/Loader";
+import Navbar from "../components/Navbar";
+import { setListings } from "../redux/state";
+import "../styles/List.css";
 import Footer from "../components/Footer";
 
+const Categorypage = () => {
+  const [loading, setLoading] = useState(true);
+  const { category } = useParams();
 
-const PropertyList = () => {
+  const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(true)
+  const listings = useSelector((state) => state.listings);
 
-
-  /* function to fetch the property list*/
-  const user = useSelector((state) => state.user);
-  const propertyList = user?.propertyList;
-
-
-  const dispatch = useDispatch()
-  const getPropertyList = async () => {
+  const getFeedListings = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/users/${user._id}/properties`,
+        `http://localhost:3001/properties?category=${category}`,
         {
           method: "GET",
         }
       );
 
       const data = await response.json();
-      dispatch(setPropertyList(data));
+      dispatch(setListings({ listings: data }));
       setLoading(false);
     } catch (err) {
-      console.log("Fetch all properties failed", err.message);
+      console.log("Fetch Listings Failed", err.message);
     }
   };
 
-
-
   useEffect(() => {
-    getPropertyList()
-  }, []);
+    getFeedListings();
+  }, [category]);
 
-  return loading ? <Loader /> : (
+  return loading ? (
+    <Loader />
+  ) : (
     <>
       <Navbar />
-      <h1 className="title-list">Your Space List</h1>
+      <h1 className="title-list">{category}</h1>
       <div className="list">
-        {propertyList?.map(
+        {listings?.map(
           ({
             _id,
             creator,
@@ -80,4 +77,4 @@ const PropertyList = () => {
   );
 };
 
-export default PropertyList;
+export default Categorypage;

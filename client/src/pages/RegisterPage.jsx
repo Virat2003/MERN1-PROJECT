@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "../styles/Register.css";
 import { useNavigate } from "react-router-dom";
 
+
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",

@@ -21,17 +21,18 @@ export const categories = [
     icon: <FaHouseUser />,
     description: "Rent a private or shared room",
   },
-  {
-    img: "assests/modern_cat.webp",
-    label: "Offices/Meeting Rooms",
-    icon: <BsPersonWorkspace />,
-    description: "Book workspaces or meeting areas",
-  },
+
   {
     img: "assests/storage_cat.webp",
     label: "Storage",
     icon: <FaWarehouse />,
     description: "Secure storage spaces for your needs",
+  },
+  {
+    img: "assests/modern_cat.webp",
+    label: "Offices/Meeting Rooms",
+    icon: <BsPersonWorkspace />,
+    description: "Book workspaces or meeting areas",
   },
 ];
 

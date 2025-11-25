@@ -5,8 +5,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url("../../public/assests/register.jpg") center;
-  background-size: cover;
+  /* background: url("../../public/assests/register.jpg") center; */
+  /* background-size: cover; */
 }
 
 .register_content {

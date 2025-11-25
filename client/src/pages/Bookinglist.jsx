@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { setBookingList } from "../redux/state";
 import "../styles/Bookinglist.css";
+import Footer from "../components/Footer"
 
 const Bookinglist = () => {
   const [loading, setLoading] = useState(true);
@@ -60,6 +61,7 @@ const Bookinglist = () => {
           )
         )}
       </div>
+      <Footer />
     </>
   );
 };
